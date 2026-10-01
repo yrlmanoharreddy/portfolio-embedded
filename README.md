@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Laxmi Manohar Meda — Embedded Software Engineering Portfolio
 
-## Getting Started
+A single-page technical portfolio built for an embedded software / firmware engineer. The design uses the visual language of engineering documentation, logic traces, and lab notes without turning the site into a terminal theme.
 
-First, run the development server:
+Professional claims, dates, education, and technologies are separated into typed data files and are based on the supplied résumé.
+
+## Stack
+
+- Next.js 16 with the App Router
+- React 19 and TypeScript
+- Tailwind CSS 4 plus project-specific CSS
+- React Server Components by default
+- MDX support for future engineering notes
+- Self-hosted Geist Sans and Geist Mono font files
+
+## Install and run
+
+Requirements: Node.js 20.9 or newer and npm.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Production checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+npm run start
+```
 
-## Learn More
+The production build uses Next.js with Webpack for deterministic CI and sandbox compatibility. The application is otherwise a standard Next.js deployment.
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push this directory to a Git repository.
+2. In Vercel, choose **Add New → Project** and import the repository.
+3. Keep the detected Next.js framework settings and default build command.
+4. Deploy.
+5. Optional but recommended: set `NEXT_PUBLIC_SITE_URL` to the final production or custom-domain URL, then redeploy. Vercel production URL variables are used automatically when this value is omitted.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No database, server secret, or external API is required.
 
-## Deploy on Vercel
+## Update portfolio content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Content is kept out of the presentation components:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `data/profile.ts` — identity, contact links, hero copy, and engineering metadata
+- `data/experience.ts` — roles, dates, résumé-backed highlights, technical details, and per-role environments
+- `data/projects.ts` — case-study records; only entries with `featured: true` render
+- `data/skills.ts` — toolkit groups and secondary engineering work
+- `data/engineering.ts` — debugging steps and hardware/software layers
+- `data/education.ts` — school, degree, dates, and GPA
+- `data/notes.ts` — published-note registry
+
+Do not set a project to `featured: true` until its claims and links have been verified.
+
+### Add an engineering note
+
+MDX is configured through `next.config.ts` and `mdx-components.tsx`. Add a real note under a route such as `app/notes/my-note/page.mdx`, then add its verified metadata to `data/notes.ts`. The home page intentionally displays “Notes are being written” while the registry is empty.
+
+### Replace the résumé
+
+Replace this file while preserving the filename:
+
+```text
+public/resume/laxmi-manohar-meda-resume.pdf
+```
+
+Both **View résumé** and **Download résumé** use that path.
+
+### Update SEO and social preview
+
+- Main metadata: `app/layout.tsx`
+- Structured Person data: `app/page.tsx`
+- Social preview image: `public/og.png`
+- Crawler files: `app/robots.ts` and `app/sitemap.ts`
+- App manifest: `app/manifest.ts`
+
+## Project structure
+
+```text
+app/          routes, metadata, local fonts, and global styles
+components/   section and interaction components
+data/         typed portfolio content
+lib/          deployment URL helpers
+public/       résumé and social preview assets
+types/        shared content types
+```

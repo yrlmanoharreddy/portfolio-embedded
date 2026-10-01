@@ -1,0 +1,102 @@
+import type { Experience } from "@/types/content";
+
+export const experiences: Experience[] = [
+  {
+    company: "Apple",
+    role: "Embedded Software / Firmware Engineer",
+    location: "Cupertino, CA",
+    startDate: "Jun 2024",
+    endDate: "Present",
+    overview:
+      "Production firmware work across peripheral paths, power and recovery states, interrupt behavior, device communication, and the tooling used to validate those paths on hardware.",
+    highlights: [
+      "Implemented a C fallback for a power-gated peripheral path while keeping transitions inside a fixed boot-time and memory budget.",
+      "Debugged dropped interrupt wakeups with JTAG and logic-analyzer timing traces, then tightened handler sequencing around the edge cases.",
+      "Built a register-backed C transport layer for SPI, I2C, UART, and USB with bounded buffers and protocol-framing checks.",
+      "Created a Python regression harness covering 240 scripted power-state, watchdog-reset, and peripheral-fault scenarios.",
+    ],
+    technicalDetails: [
+      "Made USB connect, suspend, and resume handling deterministic without disturbing device-side framing behavior.",
+      "Refactored boot and recovery paths so watchdog resets returned through a known initialization sequence across cold and warm starts.",
+      "Validated retries, chip-select timing, packet boundaries, and CRC behavior against oscilloscope and logic-analyzer traces.",
+      "Used Docker-based build images and CI/CD jobs to keep firmware artifacts consistent across developer machines and lab rigs.",
+      "Mentored junior engineers through reviews focused on interrupts, buffer ownership, and safe power sequencing.",
+    ],
+    technologies: [
+      "C",
+      "C++",
+      "Python",
+      "SPI",
+      "I2C",
+      "UART",
+      "USB",
+      "JTAG",
+      "Logic analyzer",
+      "Oscilloscope",
+      "Git",
+      "Docker",
+      "CI/CD",
+    ],
+  },
+  {
+    company: "Open Source With SLU",
+    role: "Graduate Research Assistant | Open Source Project",
+    location: "Saint Louis, MO",
+    startDate: "Jan 2024",
+    endDate: "May 2024",
+    overview:
+      "Contributed to Pi4Micronaut, an open-source framework that connects Java and Micronaut applications to Raspberry Pi hardware through Pi4J.",
+    highlights: [
+      "Worked on core device-access and application-setup wiring for Java-based IoT on Raspberry Pi.",
+      "Built reusable interfaces for GPIO sensors, actuators, LEDs, switches, displays, and motors.",
+      "Added unit and integration coverage, then validated component behavior with connected Raspberry Pi hardware.",
+      "Improved documentation, build stability, dependency handling, code quality, and release readiness through the GitHub pull-request workflow.",
+    ],
+    technicalDetails: [
+      "Integrated Micronaut and Pi4J so application components could reach hardware without repeated setup glue.",
+      "Investigated GPIO faults, dependency conflicts, build failures, and hardware-integration behavior instead of relying only on mocks.",
+      "Documented component setup, configuration, hardware interaction, and usage examples for future contributors.",
+    ],
+    technologies: [
+      "Java",
+      "Micronaut",
+      "Pi4J",
+      "Raspberry Pi",
+      "GPIO",
+      "Unit testing",
+      "Integration testing",
+      "GitHub",
+    ],
+  },
+  {
+    company: "Samsung R&D Institute India",
+    role: "Embedded Software Engineer",
+    location: "Bangalore, India",
+    startDate: "May 2020",
+    endDate: "Aug 2023",
+    overview:
+      "Worked on production C firmware and Embedded Linux paths for consumer hardware, with an emphasis on bounded memory, bus timing, interrupt behavior, and repeatable board-level validation.",
+    highlights: [
+      "Replaced brittle buffer handling with bounded allocations and clearer module boundaries in a legacy C firmware path.",
+      "Refactored CAN arbitration and serial control paths after GDB traces exposed a race between interrupt work and bus access.",
+      "Configured Embedded Linux drivers and resources, then validated probing, interrupt routing, boot behavior, and memory pressure on hardware.",
+      "Traced timing drift through GDB sessions and serial logs while coordinating board-level fixes with electrical and mechanical engineers.",
+    ],
+    technicalDetails: [
+      "Added focused C and Bash diagnostics for repetitive lab cycles and observed fault windows with oscilloscopes and logic analyzers.",
+      "Optimized allocation patterns to keep device-control and diagnostic paths deterministic under tight memory ceilings.",
+      "Supported 12 hardware validation cycles with traceable Git diffs, reproducible lab scripts, and clearer integration handoffs.",
+    ],
+    technologies: [
+      "C",
+      "Embedded Linux",
+      "CAN",
+      "Bash",
+      "GDB",
+      "Serial logs",
+      "Logic analyzer",
+      "Oscilloscope",
+      "Git",
+    ],
+  },
+];
