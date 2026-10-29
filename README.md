@@ -1,6 +1,6 @@
-# Laxmi Manohar Meda — Embedded Software Engineering Portfolio
+# Laxmi Manohar Meda — Java Full Stack Developer with AI Portfolio
 
-A single-page technical portfolio built for an embedded software / firmware engineer. The design uses the visual language of engineering documentation, logic traces, and lab notes without turning the site into a terminal theme.
+A single-page technical portfolio built for a Java full stack developer with AI experience. The design uses the visual language of engineering documentation, logic traces, and lab notes without turning the site into a terminal theme.
 
 Professional claims, dates, education, and technologies are separated into typed data files and are based on the supplied résumé.
 
